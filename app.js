@@ -13,6 +13,8 @@ const contactContent =
 
 const app = express();
 
+const posts = []
+
 app.set("view engine", "ejs");
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -21,6 +23,7 @@ app.use(express.static("public"));
 app.get("/", (req, res) => {
   res.render("home", {
     homeText: homeStartingContent,
+    homeList: posts,
   });
 });
 
@@ -41,12 +44,11 @@ app.get("/compose", (req, res) => {
 });
 
 app.post("/compose", (req, res) => {
-  let data = {composeTitle: "",
-composeText: ""}
-data = req.body
-  const dataTitle = req.body.composeTitle
-  const dataText = req.body.composeText
-  console.log(data)
+  let post = {
+    Title: req.body.composeTitle,
+    Text: req.body.composeText}
+
+  posts.push(post)
   res.redirect("/compose")
 });
 

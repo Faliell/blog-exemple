@@ -3,4 +3,12 @@
 <h1>Home</h1>
 <p><%= homeText %></p>
 
+
+<% homeList.forEach((i) => { %>
+  <h1><%= i.Title %> </h1>
+  <p><%= i.Text %> </p>
+<% });%>
+
+
+
 <%- include("partials/footer") -%>
