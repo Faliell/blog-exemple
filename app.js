@@ -36,6 +36,20 @@ app.get("/about", (req, res) => {
   });
 });
 
+app.get("/compose", (req, res) => {
+  res.render("compose")
+});
+
+app.post("/compose", (req, res) => {
+  let data = {composeTitle: "",
+composeText: ""}
+data = req.body
+  const dataTitle = req.body.composeTitle
+  const dataText = req.body.composeText
+  console.log(data)
+  res.redirect("/compose")
+});
+
 app.listen(process.env.PORT || 3000, function () {
   console.log("Server started on port 3000");
 });
