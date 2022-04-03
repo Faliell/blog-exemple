@@ -26,6 +26,7 @@ app.get("/", (req, res) => {
   res.render("home", {
     homeText: homeStartingContent,
     homeList: posts,
+    link: 'https://loremipsum.io/'
   });
 });
 
@@ -38,6 +39,7 @@ app.get("/contact", (req, res) => {
 app.get("/about", (req, res) => {
   res.render("about", {
     aboutText: aboutContent,
+
   });
 });
 
@@ -50,12 +52,15 @@ app.get("/posts/:post", (req, res) => {
   const postTitle = _.lowerCase(req.params.post)//.replace(/-/g, " ")
 
 
-  posts.forEach((post) => {
+posts.forEach((post) => {
     const storedTitle = _.lowerCase(post.Title)
 
+
   if (storedTitle === postTitle){
-    console.log("Match Found")
-  }})
+    res.render("post",{
+      postTitle: post.Title,
+      postText: post.Text,})}
+})
 })
 
 app.post("/compose", (req, res) => {

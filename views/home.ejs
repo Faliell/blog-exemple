@@ -6,8 +6,13 @@
 
 <% homeList.forEach((i) => { %>
   <h1><%= i.Title %> </h1>
-  <p><%= i.Text %> </p>
+  <p>
+    <%= i.Text.substring(0,100) + " ..." %>
+     <a href='/posts/<%=i.Title%>'>Read More</a>
+   </p>
+
 <% });%>
+
 
 
 
